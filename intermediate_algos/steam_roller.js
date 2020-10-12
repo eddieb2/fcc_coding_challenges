@@ -1,19 +1,23 @@
+// FCC SOLUTION
 function steamrollArray(arr) {
+	var flattenedArray = [];
 
+	// Create function that adds an element if it is not an array.
+	// If it is an array, then loops through it and uses recursion on that array.
+	var flatten = function (arg) {
+		if (!Array.isArray(arg)) {
+			flattenedArray.push(arg);
+		} else {
+			for (var a in arg) {
+				flatten(arg[a]);
+			}
+		}
+	};
+
+	// Call the function for each element in the array
+	arr.forEach(flatten);
+	return flattenedArray;
 }
 
+// test here
 steamrollArray([1, [2], [3, [[4]]]]);
-
-
-
-/*
-
-[1, [2], [3, [[4]]]]
-arr[x][x][x][x]
-
-
-big idea
-1 - loop for the length of the array
-  2 - look for an array
-    3 - loop through that array until the end
-*/
