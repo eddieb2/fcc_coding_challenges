@@ -1,5 +1,5 @@
 // Create an array of objects which hold the denominations and their values
-var denom = [
+let denom = [
 	{ name: 'ONE HUNDRED', val: 100.0 },
 	{ name: 'TWENTY', val: 20.0 },
 	{ name: 'TEN', val: 10.0 },
@@ -12,11 +12,11 @@ var denom = [
 ];
 
 function checkCashRegister(price, cash, cid) {
-	var output = { status: null, change: [] };
-	var change = cash - price;
+	let output = { status: null, change: [] };
+	let change = cash - price;
 
 	// Transform CID array into drawer object
-	var register = cid.reduce(
+	let register = cid.reduce(
 		function (acc, curr) {
 			acc.total += curr[1];
 			acc[curr[0]] = curr[1];
@@ -39,8 +39,8 @@ function checkCashRegister(price, cash, cid) {
 	}
 
 	// Loop through the denomination array
-	var change_arr = denom.reduce(function (acc, curr) {
-		var value = 0;
+	let change_arr = denom.reduce(function (acc, curr) {
+		let value = 0;
 		// While there is still money of this type in the drawer
 		// And while the denomination is larger than the change remaining
 		while (register[curr.name] > 0 && change >= curr.val) {
